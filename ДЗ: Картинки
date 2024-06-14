@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int raw = 3;
+            int totalPicture = 52;
+            int numberOfRaw;
+            int remnantOfPicture;
+            numberOfRaw = totalPicture / raw;
+            remnantOfPicture = totalPicture % raw;
+            Console.WriteLine($"В каждом ряду по {raw} картины. У вас всего {totalPicture} картин! Итого у вас получается {numberOfRaw} рядов и остаток {remnantOfPicture} картин");
+        }
+    }
+}
