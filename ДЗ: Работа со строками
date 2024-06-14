@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name;
+            string age;
+            string typeOfPurchase;
+            int price;
+            int deposit;
+            float timeToAccumulate;
+            int month;
+            int day;
+            Console.WriteLine("Здравствуйте! Сейчас мы проведем маленький опрос. Вам нужно будет указать некоторые данные!");
+            Console.WriteLine("Зполняя данную форму вы соглашаетесь с политикой конфиденциальности!");
+            Console.WriteLine("Давайте для начала познакомимся!");
+            Console.Write("Укажите ваше имя: ");
+            name = Console.ReadLine();
+            Console.WriteLine("Приятно познакомится " + name + "! Меня зовут Алиса! Я помогу тебе дальше заполнять форму!");
+            Console.WriteLine("Нажмите любую клавишу для продолжения!");
+            Console.ReadLine();
+            Console.Write("Введите ваш возраст: ");
+            age = Console.ReadLine();
+            Console.Write("Введите тип покупки: ");
+            typeOfPurchase = Console.ReadLine();
+            Console.Write("Введите стоимость покупки : ");
+            price = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите сумму ежемесячного пополнения депозита : ");
+            deposit = Convert.ToInt32(Console.ReadLine());
+            timeToAccumulate = price / deposit;
+            month = Convert.ToInt32(timeToAccumulate) / 30;
+            day = Convert.ToInt32(timeToAccumulate) % 30;
+            Console.WriteLine($"Резюмируем: Вас зовут {name}. Вам {age} лет. " +
+                $"Вам необходимо копить около {month} месяцев и {day} дней, " +
+                $"чтобы преобрести {typeOfPurchase} стоимостью {price}$ при пополнении депозита ежемесячно по {deposit}$");
+        }
+    }
+}
