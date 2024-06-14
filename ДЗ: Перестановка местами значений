@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name = "Popov";
+            string surname = "Ivan";
+            Console.WriteLine($"Ваше имя {name}, а фамилия {surname}");
+            name = "Ivan";
+            surname = "Popov";
+            Console.WriteLine($"Ваше имя {name}, а фамилия {surname}");
+            string coffeeCup = "Чай";
+            string teaCup = "Кофе";
+            Console.WriteLine($"У вас в кофейной чашке - {coffeeCup}, а в чайной чашке - {teaCup}");
+            coffeeCup = "Кофе";
+            teaCup = "Чай";
+            Console.WriteLine($"У вас в кофейной чашке - {coffeeCup}, а в чайной чашке - {teaCup}");
+        }
+    }
+}
