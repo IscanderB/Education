@@ -10,12 +10,12 @@ namespace Study
     {
         static void Main(string[] args)
         {
-            int raw = 3;
-            int totalPicture = 52;
-            int numberOfRaw;
-            int remnantOfPicture;
-            numberOfRaw = totalPicture / raw;
-            remnantOfPicture = totalPicture % raw;
+            int raws = 3;
+            int totalPictures = 52;
+            int numbersOfRaws;
+            int remnantOfPictures;
+            numbersOfRaws = totalPictures / raws;
+            remnantOfPictures = totalPictures % raws;
             Console.WriteLine($"В каждом ряду по {raw} картины. У вас всего {totalPicture} картин! Итого у вас получается {numberOfRaw} рядов и остаток {remnantOfPicture} картин");
         }
     }
