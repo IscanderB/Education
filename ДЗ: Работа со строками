@@ -18,6 +18,7 @@ namespace Study
             float timeToAccumulate;
             int month;
             int day;
+            int daysInMonth = 30;
             Console.WriteLine("Здравствуйте! Сейчас мы проведем маленький опрос. Вам нужно будет указать некоторые данные!");
             Console.WriteLine("Зполняя данную форму вы соглашаетесь с политикой конфиденциальности!");
             Console.WriteLine("Давайте для начала познакомимся!");
@@ -35,8 +36,8 @@ namespace Study
             Console.Write("Введите сумму ежемесячного пополнения депозита : ");
             deposit = Convert.ToInt32(Console.ReadLine());
             timeToAccumulate = price / deposit;
-            month = Convert.ToInt32(timeToAccumulate) / 30;
-            day = Convert.ToInt32(timeToAccumulate) % 30;
+            month = Convert.ToInt32(timeToAccumulate) / daysInMonth;
+            day = Convert.ToInt32(timeToAccumulate) % daysInMonth;
             Console.WriteLine($"Резюмируем: Вас зовут {name}. Вам {age} лет. " +
                 $"Вам необходимо копить около {month} месяцев и {day} дней, " +
                 $"чтобы преобрести {typeOfPurchase} стоимостью {price}$ при пополнении депозита ежемесячно по {deposit}$");
