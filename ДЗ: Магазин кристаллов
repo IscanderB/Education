@@ -8,7 +8,7 @@ namespace Study
         {
             int crystalPrice = 10;
             int totalPurchaseCost;
-            
+
             Console.WriteLine("Добро пожаловать в нашу лавку кристалов! Сегодня кристалы по " + crystalPrice + "$ за штуку!");
 
             Console.Write("Укажите колличество ваших денег: ");
@@ -17,8 +17,8 @@ namespace Study
             Console.Write("Сколько кристалов вы хотите приобрести?: ");
             int buyCountCrystal = Convert.ToInt32(Console.ReadLine());
 
-            buyersMoney -= buyCountCrystal * crystalPrice;
             totalPurchaseCost = buyCountCrystal * crystalPrice;
+            buyersMoney -= totalPurchaseCost;
 
             Console.WriteLine($"Поздравляем! Вы приобрели {buyCountCrystal} кристалов на сумму {totalPurchaseCost}$. У вас осталось {buyersMoney}$");
         }
