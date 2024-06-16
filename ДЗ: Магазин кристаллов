@@ -1,0 +1,26 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int crystalPrice = 10;
+            int purchaseCost;
+            
+            Console.WriteLine("Добро пожаловать в нашу лавку кристалов! сегодня кристалы по " + crystalPrice + "$ за штуку!");
+
+            Console.Write("Укажите колличество ваших денег: ");
+            int buyersMoney = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Сколько кристалов вы хотите приобрести?: ");
+            int buyCountCrystal = Convert.ToInt32(Console.ReadLine());
+
+            buyersMoney -= buyCountCrystal * crystalPrice;
+            purchaseCost = buyCountCrystal * crystalPrice;
+
+            Console.WriteLine($"Поздравляем! Вы приобрели {buyCountCrystal} кристалов на сумму {purchaseCost}. У вас осталось {buyersMoney}$");
+        }
+    }
+}
