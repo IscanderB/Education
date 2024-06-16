@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Study
 {
@@ -10,13 +6,15 @@ namespace Study
     {
         static void Main(string[] args)
         {
-            int raws = 3;
+            int countPicturesInRaw = 3;
             int totalPictures = 52;
-            int numbersOfRaws;
-            int remnantOfPictures;
-            numbersOfRaws = totalPictures / raws;
-            remnantOfPictures = totalPictures % raws;
-            Console.WriteLine($"В каждом ряду по {raw} картины. У вас всего {totalPicture} картин! Итого у вас получается {numberOfRaw} рядов и остаток {remnantOfPicture} картин");
+            int countRaws;
+            int remnantPictures;
+            countRaws = totalPictures / countPicturesInRaw;
+            remnantPictures = totalPictures % countPicturesInRaw;
+            Console.WriteLine($"В каждом ряду по {countPicturesInRaw} картины. " +
+                              $"У вас всего {totalPictures} картин! " +
+                              $"Итого у вас получается {countRaws} рядов и остаток {remnantPictures} картин");
         }
     }
 }
