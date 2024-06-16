@@ -8,13 +8,15 @@ namespace Study
         {
             int countPicturesInRaw = 3;
             int totalPictures = 52;
-            int countRaws;
+            int totalCountRawsPictures;
             int remnantPictures;
-            countRaws = totalPictures / countPicturesInRaw;
+
+            totalCountRawsPictures = totalPictures / countPicturesInRaw;
             remnantPictures = totalPictures % countPicturesInRaw;
+
             Console.WriteLine($"В каждом ряду по {countPicturesInRaw} картины. " +
                               $"У вас всего {totalPictures} картин! " +
-                              $"Итого у вас получается {countRaws} рядов и остаток {remnantPictures} картин");
+                              $"Итого у вас получается {totalCountRawsPictures} рядов и остаток {remnantPictures} картин");
         }
     }
 }
