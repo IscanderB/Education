@@ -8,16 +8,18 @@ namespace Study
         {
             string name = "Popov";
             string surname = "Ivan";
+            string swap = name;
             Console.WriteLine($"Ваше имя {name}, а фамилия {surname}");
-            name = "Ivan";
-            surname = "Popov";
+            name = surname;
+            surname = swap;
             Console.WriteLine($"Ваше имя {name}, а фамилия {surname}");
 
             string coffeeCup = "Чай";
             string teaCup = "Кофе";
+            string swapDrink = coffeeCup;
             Console.WriteLine($"У вас в кофейной чашке - {coffeeCup}, а в чайной чашке - {teaCup}");
-            coffeeCup = "Кофе";
-            teaCup = "Чай";
+            coffeeCup = teaCup;
+            teaCup = swapDrink;            
             Console.WriteLine($"У вас в кофейной чашке - {coffeeCup}, а в чайной чашке - {teaCup}");
         }
     }
