@@ -10,12 +10,14 @@ namespace Study
             int minutesInHour = 60;
             int waitingTimeInHours;
             int waitingTimeInMinutes;
+            int totalWaitingTimeInMinutes;
 
             Console.Write("Пожалуйста введите количество людей в очереди: ");
             int patientsCount = Convert.ToInt32(Console.ReadLine());
 
-            waitingTimeInHours = patientsCount * appointmentTimeInMinute / minutesInHour;
-            waitingTimeInMinutes = patientsCount * appointmentTimeInMinute % minutesInHour;
+            totalWaitingTimeInMinutes = patientsCount * appointmentTimeInMinute;
+            waitingTimeInHours = totalWaitingTimeInMinutes / minutesInHour;
+            waitingTimeInMinutes = totalWaitingTimeInMinutes % minutesInHour;
 
             Console.WriteLine($"Время в ожидании составляет {waitingTimeInHours} часа и {waitingTimeInMinutes} минут");
         }
