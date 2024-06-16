@@ -1,0 +1,66 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float rubInWallet, usdInWallet;
+            float sellUsd = 100, buyUsd = 90;
+            float exchangeCurrencyCount;
+
+            Console.WriteLine($"Доюро пожаловать в обменник! \n Курс валют на сегодня:\n Продажа USD - {sellUsd} рублей\n Покупка USD - {buyUsd} рублей");
+
+            Console.Write("Сколько рублей в вашем кошельке?: ");
+            rubInWallet = Convert.ToSingle(Console.ReadLine());
+
+            Console.Write("Сколько долларов в вашем кошельке?: ");
+            usdInWallet = Convert.ToSingle(Console.ReadLine());
+
+            Console.WriteLine("Выберите операцию!\n 1 - Купить доллары\n 2 - Продать доллары");
+            string desireOperation = Console.ReadLine();
+
+            switch (desireOperation)
+            {
+                case "1":
+                    Console.WriteLine("Покупка долларов");
+                    Console.Write("Сколько долларов вы хотите купить?: ");
+                    exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                    float amountOfRubToBuy = exchangeCurrencyCount * sellUsd;
+                    
+                    if (rubInWallet >= amountOfRubToBuy)
+                    {
+                        rubInWallet -= amountOfRubToBuy;
+                        usdInWallet += exchangeCurrencyCount;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"У вас не достаточно денег для оперции! Вам не хватает {amountOfRubToBuy - rubInWallet} рублей");
+                    }
+                    break;
+
+                case "2":
+                    Console.WriteLine("Продажа долларов");
+                    Console.Write("Сколько долларов вы хотите продать?: ");
+                    exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                    float amountOfUsdToSell = exchangeCurrencyCount * buyUsd;
+                    
+                    if (usdInWallet >= exchangeCurrencyCount)
+                    {
+                        usdInWallet -= exchangeCurrencyCount;
+                        rubInWallet += amountOfUsdToSell;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"У вас не достаточно денег для оперции! Вам не хватает {amountOfUsdToSell - usdInWallet} долларов");
+                    }                                  
+                    
+                    break;         
+            }
+            Console.WriteLine($"Спасибо за обмен валюты!\n У вас сейчас в кошельке {rubInWallet} рублей и {usdInWallet} долларов");
+        }
+    }
+}
