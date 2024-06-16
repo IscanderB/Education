@@ -1,0 +1,23 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int appointmentTimeInMinute = 10;
+            int minutesInHour = 60;
+            int waitingTimeInHours;
+            int waitingTimeInMinutes;
+
+            Console.Write("Пожалуйста введите количество людей в очереди: ");
+            int patientsCount = Convert.ToInt32(Console.ReadLine());
+
+            waitingTimeInHours = patientsCount * appointmentTimeInMinute / minutesInHour;
+            waitingTimeInMinutes = patientsCount * appointmentTimeInMinute % minutesInHour;
+
+            Console.WriteLine($"Время в ожидании составляет {waitingTimeInHours} часа и {waitingTimeInMinutes} минут");
+        }
+    }
+}
