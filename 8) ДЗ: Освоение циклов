@@ -1,0 +1,30 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string userInput;
+            int repeatCount;
+
+            Console.WriteLine("Сейчас мы будем повторять вывод вашего сообщения столько раз, сколько вы уважите!");
+            Console.Write("Укажите количество повторений: ");
+
+            repeatCount = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Введмте текст который хотите вывести " + repeatCount + " раз: ");
+
+            userInput = Console.ReadLine();
+
+            for (int i = 0; i < repeatCount; i++)
+            {
+                Console.WriteLine((1 + i) + ") " + userInput);
+            }
+
+            Console.WriteLine($"Мы вывели {repeatCount} раз ваще сообщение - {userInput}");
+        }
+    }
+}
+
