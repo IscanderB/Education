@@ -1,0 +1,45 @@
+using System;
+using System.Reflection;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string userInput;
+            string stopWord = "Exit";
+            int triesСounter = 0;
+            int triesNumber = 5;
+
+            Console.WriteLine("Мы загадали слово и сейчас вы будете угадывать его!\nЯ дам вам первую подсказку!\nСлово состоит из 4 букв - [E..t]");
+
+            while (true)
+            {
+                triesNumber--;
+
+                Console.Write("Введите ваш ответ: ");
+
+                userInput = Console.ReadLine();
+                triesСounter++;
+
+                if (userInput == stopWord)
+                {
+                    Console.WriteLine("Поздравляю! Вы отгадали слово!");
+                    break;
+                }
+                else if (triesNumber <= 0)
+                {
+                    Console.WriteLine($"Поптыка #{triesСounter}! Ответ не верный!\nПОДСКАЗКА! Слово состоит из 4 букв - [Ex.t]");
+
+                    triesNumber = 5;
+                }
+                else
+                {
+                    Console.WriteLine($"Поптыка #{triesСounter}! Ответ не верный! Попробуйте еще раз!\nОсталось попыток до посдсказки - {triesNumber}");
+                }
+            }
+        }
+    }
+}
+
