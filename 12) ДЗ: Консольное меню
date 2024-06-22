@@ -1,0 +1,118 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string CommandHelp = "/help";
+            const string CommandExit = "/exit";
+            const string CommandClear = "/clear";
+            const string CommandRandomNumber = "/random";
+            const string CommandShowText = "/text";
+
+            string userInput = "", 
+                   name;
+            char agreeInput = 'Y',
+                 declineInput = 'N';
+            int value,
+                lowerNumberRandom,
+                upperNumberRandom;
+            Random random = new Random();
+
+            Console.WriteLine("Добро пожаловать! Давайте познакомимся!");
+            Console.Write("Введите ваше имя: ");
+
+            name = Console.ReadLine();
+
+            Console.WriteLine($"Рад знакомству {name}");
+            Console.WriteLine($"Чтобы ознакомится со списком команд, введите команду - {CommandHelp}");
+
+            while (userInput != CommandExit)
+            {
+                Console.Write("Command: ");
+
+                userInput = Console.ReadLine();
+                value = random.Next(0, 100);
+
+                switch (userInput)
+                {
+                    case CommandHelp:
+                        Console.WriteLine($"Список команд:\n" +
+                            $"1) {CommandShowText} - Команда для вывода текста\n" +
+                            $"2) {CommandClear} - Команда для очистки консоли\n" +
+                            $"3) {CommandRandomNumber} - Команда для вывода случайного числа из диапазона чисел\n" +
+                            $"4) {CommandExit} - Команда для выхода из приложения");
+                        break;
+
+                    case CommandExit:
+                        Console.WriteLine("Вы выходите из приложения!");
+                        break;
+
+                    case CommandClear:
+                        Console.Write("Сейчас будт очищен консоль. Нажмите любую клавишу!");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Console.WriteLine("Ваша комманда выполнена успешно!");
+                        Console.WriteLine($"{name}, чтобы ознакомится со списком комманд, введите - {CommandHelp}");
+                        break;
+
+                    case CommandRandomNumber:
+                        Console.WriteLine("Сейчас мы выведим вам случайное число от 0 до 100!");
+                        Console.WriteLine("Это число: " + value);
+                        Console.WriteLine("Ваша комманда выполнена успешно!");
+                        Console.Write("Хотите ввести свой дипазон? (Y/N)");
+
+                        while ((userInput != Convert.ToString(agreeInput)) || (userInput != Convert.ToString(declineInput)))
+                        {
+                            userInput = Console.ReadLine();
+
+                            if (userInput != Convert.ToString(agreeInput) && userInput != Convert.ToString(declineInput))
+                            {
+                                Console.Write("Ошибка ввода! Введите ответ (Y/N)");
+                            }
+                            else if (userInput == Convert.ToString(agreeInput))
+                            {
+                                Console.Write("Ведите минимальное значение диапазона: ");
+                                lowerNumberRandom = Convert.ToInt32(Console.ReadLine());
+
+                                Console.Write("Ведите максимальное значение диапазона: ");
+                                upperNumberRandom = Convert.ToInt32(Console.ReadLine());
+
+                                while (upperNumberRandom < lowerNumberRandom)
+                                {
+                                    Console.WriteLine("Максимальное значение не может быть меньше минимального!");
+                                    Console.Write("Ведите максимальное значение диапазона: ");
+                                    upperNumberRandom = Convert.ToInt32(Console.ReadLine());
+                                }
+                                if (upperNumberRandom > lowerNumberRandom)
+                                {
+                                    Console.WriteLine($"Сейчас мы выведим вам случайное число от {lowerNumberRandom} до {upperNumberRandom}!");
+                                    value = random.Next(lowerNumberRandom, (upperNumberRandom + 1));
+                                    Console.WriteLine("Это число: " + value);
+                                    Console.WriteLine("Ваша комманда выполнена успешно!");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Хорошо! Продолжим дальше.");
+                                break;
+                            }
+                        }
+                        break;
+
+                    case CommandShowText:
+                        Console.WriteLine($"Привет {name}! Вы набрали команду {CommandShowText} для вывода текста!");
+                        Console.WriteLine("Ваша команда выполнена успешно!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Такая команда отсутствует!");
+                        break;
+                }
+            }
+        }
+    }
+}
