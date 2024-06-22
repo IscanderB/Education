@@ -25,6 +25,7 @@ namespace Study
                     sum += i;
                 }
             }
+
             Console.WriteLine($"Сумма чисел кратных {multipleNumber1} и {multipleNumber2} в диапазоне (от {lowerNumberRandom} до {value}) = {sum}");
         }
     }
