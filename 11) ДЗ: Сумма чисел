@@ -1,0 +1,31 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int sum = 0,
+                value,
+                multipleNumber1 = 3,
+                multipleNumber2 = 5,
+                lowerNumberRandom = 0,
+                upperNumberRandom = 101;
+
+            Random rand = new Random();
+            value = rand.Next(lowerNumberRandom, upperNumberRandom);
+
+            Console.WriteLine($"Рандомоное число от {lowerNumberRandom} до {upperNumberRandom} выпало - {value}");
+
+            for (int i = 1; i < (value + 1); i++)
+            {
+                if (i % multipleNumber1 == 0 || i % multipleNumber2 == 0)
+                {
+                    sum += i;
+                }
+            }
+            Console.WriteLine($"Сумма чисел кратных {multipleNumber1} и {multipleNumber2} в диапазоне (от {lowerNumberRandom} до {value}) = {sum}");
+        }
+    }
+}
