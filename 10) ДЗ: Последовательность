@@ -4,7 +4,7 @@ namespace Study
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             int startNumber = 5,
                 finalNimber = 103,
