@@ -12,13 +12,13 @@ namespace Study
             const string CommandRandomNumber = "/random";
             const string CommandShowText = "/text";
 
-            string userInput = "", 
-                   name;
-            char agreeInput = 'Y',
-                 declineInput = 'N';
-            int value,
-                lowerNumberRandom,
-                upperNumberRandom;
+            string userInput = "";
+            string name;
+            char agreeInput = 'Y';
+            char declineInput = 'N';
+            int value;
+            int lowerNumberRandom;
+            int upperNumberRandom;
             Random random = new Random();
 
             Console.WriteLine("Добро пожаловать! Давайте познакомимся!");
