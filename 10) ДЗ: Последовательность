@@ -8,13 +8,13 @@ namespace Study
         {
             int startNumber = 5,
                 finalNimber = 103,
-                step = 7,
-                result = startNumber;
+                step = 7;
 
-            while (result < (finalNimber + step))
+            // использую цикл FOR т.к у нас заданы конкретные границы цикла
+
+            for (int i = startNumber; i < finalNimber + step; i += step)
             {
-                Console.WriteLine(result);
-                result += step;
+                Console.WriteLine(i);
             }
         }
     }
