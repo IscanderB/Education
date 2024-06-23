@@ -28,12 +28,15 @@ namespace Study
 
             Console.WriteLine($"Добро пожаловать в конвертер валют! \n");
             Console.Write("Сколько рублей в вашем кошельке?: ");
+
             rubInWallet = Convert.ToSingle(Console.ReadLine());
 
             Console.Write("Сколько долларов в вашем кошельке?: ");
+
             usdInWallet = Convert.ToSingle(Console.ReadLine());
 
             Console.Write("Сколько евро в вашем кошельке?: ");
+
             eurInWallet = Convert.ToSingle(Console.ReadLine());
 
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -50,9 +53,7 @@ namespace Study
                     $"5. конвертация EUR в RUB\n" +
                     $"6. конвертация EUR в USD\n" +
                     $"7. Выход\n");
-
                 Console.ForegroundColor = ConsoleColor.Blue;
-
                 Console.Write("Выберите операцию: ");
 
                 desireOperation = Console.ReadLine();
@@ -65,6 +66,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию RUB в USD\n");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 USD = {rubToUsdExchangeRate} рублей)\n");
                         Console.Write("Сколько рублей вы хотите конвертировать в доллары?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (rubInWallet >= exchangeCurrencyCount)
@@ -72,12 +74,12 @@ namespace Study
                             rubInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount / rubToUsdExchangeRate;
                             usdInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} рублей на {currentExchangeAmount} долларов");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} RUB на {currentExchangeAmount} USD");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -86,6 +88,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию RUB в EUR");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {rubToEurExchangeRate} рублей)\n");
                         Console.Write("Сколько рублей вы хотите конвертировать в евро?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (rubInWallet >= exchangeCurrencyCount)
@@ -93,12 +96,12 @@ namespace Study
                             rubInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount / rubToEurExchangeRate;
                             eurInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} рублей на {currentExchangeAmount} евро\n");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} RUB на {currentExchangeAmount} EUR\n");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -107,6 +110,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию USD в RUB");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 USD = {rubToUsdExchangeRate} рублей)\n");
                         Console.Write("Сколько долларов вы хотите конвертировать в рубли?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (usdInWallet >= exchangeCurrencyCount)
@@ -114,12 +118,12 @@ namespace Study
                             usdInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount * rubToUsdExchangeRate;
                             rubInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} долларов на {currentExchangeAmount} рублей\n");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} USD на {currentExchangeAmount} RUB\n");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -128,6 +132,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию USD в EUR");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {usdToEurExchangeRate} долларов)\n");
                         Console.Write("Сколько долларов вы хотите конвертировать в евро?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (usdInWallet >= exchangeCurrencyCount)
@@ -135,12 +140,12 @@ namespace Study
                             usdInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount * usdToEurExchangeRate;
                             eurInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} долларов на {currentExchangeAmount} евро\n");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} USD на {currentExchangeAmount} EUR\n");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -149,6 +154,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию EUR в RUB");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {rubToEurExchangeRate} долларов)\n");
                         Console.Write("Сколько евро вы хотите конвертировать в рубли?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (eurInWallet >= exchangeCurrencyCount)
@@ -156,12 +162,12 @@ namespace Study
                             eurInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount * rubToEurExchangeRate;
                             rubInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} евро на {currentExchangeAmount} рублей\n");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} EUR на {currentExchangeAmount} RUB\n");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -170,6 +176,7 @@ namespace Study
                         Console.WriteLine("\nВы выбрали конвертацию EUR в USD");
                         Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {usdToEurExchangeRate} долларов)\n");
                         Console.Write("Сколько евро вы хотите конвертировать в доллары?: ");
+
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
 
                         if (eurInWallet >= exchangeCurrencyCount)
@@ -177,12 +184,12 @@ namespace Study
                             eurInWallet -= exchangeCurrencyCount;
                             currentExchangeAmount = exchangeCurrencyCount * usdToEurExchangeRate;
                             usdInWallet += currentExchangeAmount;
-                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} евро на {currentExchangeAmount} рублей\n");
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} EUR на {currentExchangeAmount} USD\n");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-
                             Console.WriteLine("\nНе достаточно денег!");
                         }
                         break;
@@ -192,12 +199,12 @@ namespace Study
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nТакая операция не существует!");
                         break;
                 }
-                
-                Console.ForegroundColor = ConsoleColor.Gray;
 
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine($"\nУ вас в кошельке сейчас:\n" +
                     $"1) Рублей = {rubInWallet} RUB\n" +
                     $"2) Долларов = {usdInWallet} USD\n" +
