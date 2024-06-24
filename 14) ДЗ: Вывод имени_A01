@@ -1,0 +1,52 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const int constant = 2;
+            
+            bool isRunning = true;
+
+            string name;
+            string symbol;
+            string userInput;
+
+            while (isRunning)
+            {
+                Console.Write("Введите ваше имя: ");
+
+                name = Console.ReadLine();
+
+                Console.Write("Введите любой символ: ");
+
+                symbol = Console.ReadLine();
+
+                for (int i = 0; i < name.Length + constant; i++)
+                {
+                    Console.Write(symbol);
+                }
+
+                Console.WriteLine("\n" + symbol + name + symbol);
+
+                for (int i = 0; i < name.Length + constant; i++)
+                {
+                    Console.Write(symbol);
+                }
+
+                Console.Write($"\nЕсли хотите повторить еще раз? (yes): ");
+
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
+                {
+                    continue;
+                }
+
+                isRunning = false;
+            }
+        }
+    }
+}
