@@ -6,8 +6,6 @@ namespace Study
     {
         static void Main(string[] args)
         {
-            const int constant = 2;
-            
             bool isRunning = true;
 
             string name;
@@ -24,14 +22,14 @@ namespace Study
 
                 symbol = Console.ReadLine();
 
-                for (int i = 0; i < name.Length + constant; i++)
+                for (int i = 0; i < name.Length + 2; i++)
                 {
                     Console.Write(symbol);
                 }
 
                 Console.WriteLine("\n" + symbol + name + symbol);
 
-                for (int i = 0; i < name.Length + constant; i++)
+                for (int i = 0; i < name.Length + 2; i++)
                 {
                     Console.Write(symbol);
                 }
