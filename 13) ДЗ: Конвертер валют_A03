@@ -1,0 +1,243 @@
+using System;
+using System.Net;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string RubToUsdExchange = "1";
+            const string RubToEurExchange = "2";
+            const string UsdToRubExchange = "3";
+            const string UsdToEurExchange = "4";
+            const string EurToRubExchange = "5";
+            const string EurToUsdExchange = "6";
+            const string ExitCommand = "7";
+
+            bool isWorking = true;
+
+            string desireOperation;
+
+            float rubInWallet;
+            float usdInWallet;
+            float eurInWallet;
+            float exchangeCurrencyCount;
+            float currentExchangeAmount;
+            float usdToRubExchangeRate = 100;
+            float rubToUsdExchangeRate = 1 / usdToRubExchangeRate;
+            float eurToRubExchangeRate = 110;
+            float rubToEurExchangeRate = 1 / eurToRubExchangeRate;
+            float usdToEurExchangeRate = 1.2f;
+            float eurToUsdExchangeRate = 1 / usdToEurExchangeRate;
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Добро пожаловать в конвертер валют! \n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("Сколько рублей в вашем кошельке?: ");
+
+            rubInWallet = Convert.ToSingle(Console.ReadLine());
+
+            Console.Write("Сколько долларов в вашем кошельке?: ");
+
+            usdInWallet = Convert.ToSingle(Console.ReadLine());
+
+            Console.Write("Сколько евро в вашем кошельке?: ");
+
+            eurInWallet = Convert.ToSingle(Console.ReadLine());
+
+            if (rubInWallet < 0 || usdInWallet < 0 || eurInWallet < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nВы ввели отрицательное значени\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                isWorking = false;
+            }
+
+            while (isWorking)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"\nСписок доступных операций:\n" +
+                    $"\n{RubToUsdExchange}. конвертация RUB в USD\n" +
+                    $"{RubToEurExchange}. конвертация RUB в EUR\n" +
+                    $"{UsdToRubExchange}. конвертация USD в RUB\n" +
+                    $"{UsdToEurExchange}. конвертация USD в EUR\n" +
+                    $"{EurToRubExchange}. конвертация EUR в RUB\n" +
+                    $"{EurToUsdExchange}. конвертация EUR в USD\n" +
+                    $"{ExitCommand}. Выход\n");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Выберите операцию: ");
+
+                desireOperation = Console.ReadLine();
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                switch (desireOperation)
+                {
+                    case RubToUsdExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию RUB в USD\n");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 USD = {usdToRubExchangeRate} рублей)\n");
+                        Console.Write("Сколько рублей вы хотите конвертировать в доллары?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (rubInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            rubInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * rubToUsdExchangeRate;
+                            usdInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} RUB на {currentExchangeAmount} USD");
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case RubToEurExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию RUB в EUR");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {eurToRubExchangeRate} рублей)\n");
+                        Console.Write("Сколько рублей вы хотите конвертировать в евро?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (rubInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            rubInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * rubToEurExchangeRate;
+                            eurInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} RUB на {currentExchangeAmount} EUR\n");
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case UsdToRubExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию USD в RUB");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 USD = {usdToRubExchangeRate} рублей)\n");
+                        Console.Write("Сколько долларов вы хотите конвертировать в рубли?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (usdInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            usdInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * usdToRubExchangeRate;
+                            rubInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} USD на {currentExchangeAmount} RUB\n");
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case UsdToEurExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию USD в EUR");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {usdToEurExchangeRate} долларов)\n");
+                        Console.Write("Сколько долларов вы хотите конвертировать в евро?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (usdInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            usdInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * usdToEurExchangeRate;
+                            eurInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} USD на {currentExchangeAmount} EUR\n");
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case EurToRubExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию EUR в RUB");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {eurToRubExchangeRate} долларов)\n");
+                        Console.Write("Сколько евро вы хотите конвертировать в рубли?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (eurInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            eurInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * eurToRubExchangeRate;
+                            rubInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} EUR на {currentExchangeAmount} RUB\n");
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case EurToUsdExchange:
+                        Console.WriteLine("\nВы выбрали конвертацию EUR в USD");
+                        Console.WriteLine($"Конвертация пройдет по текущему курсу (1 EUR = {usdToEurExchangeRate} долларов)\n");
+                        Console.Write("Сколько евро вы хотите конвертировать в доллары?: ");
+
+                        exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                        if (eurInWallet >= exchangeCurrencyCount && exchangeCurrencyCount >= 0)
+                        {
+                            eurInWallet -= exchangeCurrencyCount;
+                            currentExchangeAmount = exchangeCurrencyCount * eurToUsdExchangeRate;
+                            usdInWallet += currentExchangeAmount;
+
+                            Console.WriteLine($"\nВы обменяли {exchangeCurrencyCount} EUR на {currentExchangeAmount} USD\n");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nНе верно указанна сумма!");
+                        }
+
+                        break;
+
+                    case ExitCommand:
+                        Console.WriteLine("\nСпасибо за пользование конвертером");
+
+                        isWorking = false;
+
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nТакая операция не существует!");
+
+                        break;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine($"\nУ вас в кошельке сейчас:\n" +
+                    $"1) Рублей = {rubInWallet} RUB\n" +
+                    $"2) Долларов = {usdInWallet} USD\n" +
+                    $"3) Евро = {eurInWallet} EUR\n");
+            }
+        }
+    }
+}
