@@ -10,6 +10,7 @@ namespace Study
 
             string name;
             string middleLine;
+            string symbols = string.Empty;
 
             Console.Write("Введите ваше имя: ");
 
@@ -18,22 +19,14 @@ namespace Study
             Console.Write("Введите любой символ: ");
 
             symbol = Convert.ToChar(Console.ReadLine());
-            middleLine = Convert.ToString(symbol + name + symbol);
+            middleLine = $"{symbol}{name}{symbol}";
 
-            for (int i = 0; i < name.Length; i++)
+            for (int i = 0; i < middleLine.Length; i++)
             {
-                Console.Write(symbol);
+                symbols += symbol;
             }
 
-            Console.Write($"{symbol}{symbol}");
-            Console.WriteLine($"\n{middleLine}");
-
-            for (int i = 0; i < name.Length; i++)
-            {
-                Console.Write(symbol);
-            }
-
-            Console.Write($"{symbol}{symbol}\n");
+            Console.WriteLine($"{symbols}\n{middleLine}\n{symbols}");
         }
     }
 }
