@@ -1,0 +1,56 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = "swordfish";
+            string userInput;
+
+            int triesCount = 3;
+
+            bool isWorking = true;
+
+            Console.WriteLine("Сообщение защищено паролем!\n");
+            Console.Write("Пожалуйста введите пароль: ");
+
+            while (isWorking)
+            {
+                for (int i = 1; i <= triesCount; i++)
+                {
+                    userInput = Console.ReadLine();
+
+                    if (userInput == password)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Доступ открыт!");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                        isWorking = false;
+
+                        break;
+                    }
+
+                    if (triesCount == i)
+                    {
+                        Console.WriteLine("\nПопытки закончились!\n");
+
+                        isWorking = false;
+                    }
+
+
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nДоступ закрыт!");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine("\nУ вас осталось попыток: " + (triesCount - i));
+                        Console.Write("\nПопробуйте еще раз: ");
+                    }
+                }
+            }
+        }
+    }
+}
