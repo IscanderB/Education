@@ -1,0 +1,30 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int baseNumber = 2;
+            int result = 1;
+            int exponent = 0;
+            int value;
+
+            Random random = new Random();
+
+            value = random.Next(0, 101);
+
+            Console.WriteLine($"Рандомное число равно: {value}");
+
+            while (result <= value)
+            {
+                result *= baseNumber;
+                exponent++;
+            }
+
+            Console.WriteLine($"Минимальня степень числа {baseNumber}, превосходящее число {value}, равна: {exponent}");
+            Console.WriteLine($"Число {baseNumber} в степени {exponent} равно {result}");
+        }
+    }
+}
