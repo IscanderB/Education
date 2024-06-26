@@ -1,0 +1,43 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = 0;
+            int multipleNumber;
+            int lowerRandomBound = 10;
+            int upperRandomBound = 25;
+            int lowerBound = 50;
+            int upperBound = 150;
+            int numberCount = 0;
+
+            Random random = new Random();
+
+            multipleNumber = random.Next(lowerRandomBound, upperRandomBound);
+
+            Console.WriteLine($"Мы выбрали случайное число из диапазона {lowerRandomBound} и {upperRandomBound}: {multipleNumber}");
+
+            while (number < lowerBound)
+            {
+                number += multipleNumber;
+            }
+
+            for (int i = lowerBound; i <= upperBound; i++)
+            {
+                if (number == i)
+                {
+                    numberCount++;
+                    number += multipleNumber;
+                }
+
+                continue;
+            }
+
+            Console.WriteLine($"Количество чисел кратных {multipleNumber} в диапазано чисел от {lowerBound} до {upperBound} состовляет: {numberCount}");
+
+        }
+    }
+}
