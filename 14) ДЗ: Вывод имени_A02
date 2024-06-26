@@ -1,0 +1,56 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string UserConfirmation = "yes";
+            
+            bool isRunning = true;
+
+            char symbol;
+
+            string name;
+            string userInput;
+
+            while (isRunning)
+            {
+                Console.Write("Введите ваше имя: ");
+
+                name = Console.ReadLine();
+
+                Console.Write("Введите любой символ: ");
+
+                symbol = Convert.ToChar(Console.ReadLine());
+
+                Console.Write($"{ symbol}{ symbol}");
+
+                for (int i = 0; i < name.Length; i++)
+                {
+                    Console.Write(symbol);
+                }
+
+                Console.WriteLine($"\n{symbol}{name}{symbol}");
+                Console.Write($"{ symbol}{ symbol}");
+
+                for (int i = 0; i < name.Length; i++)
+                {
+                    Console.Write(symbol);
+                }
+
+                Console.Write($"\nЕсли хотите повторить еще раз? ({UserConfirmation}): ");
+
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == UserConfirmation)
+                {
+                    continue;
+                }
+
+                isRunning = false;
+            }
+        }
+    }
+}
