@@ -37,7 +37,6 @@ namespace Study
             }
 
             Console.WriteLine($"Количество чисел кратных {multipleNumber} в диапазано чисел от {lowerBound} до {upperBound} состовляет: {numberCount}");
-
         }
     }
 }
