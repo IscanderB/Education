@@ -1,0 +1,220 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string StaffStrike = "1";
+            const string Fireball = "2";
+            const string Explotion = "3";
+            const string HealCast = "4";
+
+            int bossHealth = 1000;
+            int bossDamage;
+            int lowerBossDamage = 10;
+            int upperBossDamage = 40;
+            int playerHealth = 500;
+            int playerHealthMax = 500;
+            int playerMana = 500;
+            int playerArmor = 100;
+            int playerDamage;
+            int lowerPlayerDamage = 10;
+            int upperPlayerDamage = 25;
+            int playerFireballDamage = 45;
+            int playerFireballManaCost = 20;
+            int playerExplosionDamage = 95;
+            int playerExplosionManaCost = 65;
+            int playerHealCast = 85;
+            int playerHealManaCost = 55;
+            int triesCountHeal = 3;
+            int numberRound = 0;
+
+            string bossName = "Шокерфэйс";
+            string playerName;
+            string fireballName = "Огенный шар";
+            string explosionName = "Взрыв";
+            string healCastName = "Жизнецвет";
+            string desireOperation;
+            string nextLine = "\n";
+
+            bool isWorking = true;
+            bool fireballActive = false;
+
+            Random randomBossDamage = new Random();
+            Random randomPlayerDamage = new Random();
+
+            Console.WriteLine($"Добро пожаловать на поединок!{nextLine}");
+            Console.WriteLine($"Cейчас у вас состоится бой с Боссом по прозвищу {bossName}!{nextLine}");
+            Console.Write("Введите пожалуйста ваш Никнэйм: ");
+
+            playerName = Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{nextLine}Ваши характеристики {playerName}:{nextLine}" +
+                              $"Здоровье - [{playerHealthMax}]{nextLine}" +
+                              $"Мана - [{playerMana}]{nextLine}" +
+                              $"Броня - [{playerArmor}]{nextLine}" +
+                              $"Навыки и способности:{nextLine}" +
+                              $"Урон посохом - [{lowerPlayerDamage} - {upperPlayerDamage}]{nextLine}" +
+                              $"Урон от заклинания [{fireballName}] - [{playerFireballDamage}]{nextLine}" +
+                              $"Урон от заклинания [{explosionName}] - [{playerExplosionDamage}]{nextLine}" +
+                              $"Лечение заклинанием [{healCastName}] - [{playerHealCast}]{nextLine}");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"Да начнется поединок!{nextLine}");
+
+            while (isWorking)
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Список доступных атак:");
+                Console.WriteLine($"{StaffStrike} - Нанести удар посохом.{nextLine}" +
+                                  $"{Fireball} - Сотворить заклинание [{fireballName}]{nextLine}" +
+                                  $"{Explotion} - Сотворить заклинание [{explosionName}]{nextLine}" +
+                                  $"{HealCast} - Сотворить заклинание лечения [{healCastName}]{nextLine}");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.Write("Выберите действие: ");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                desireOperation = Console.ReadLine();
+
+                switch (desireOperation)
+                {
+                    case StaffStrike:
+                        playerDamage = randomPlayerDamage.Next(lowerPlayerDamage, upperPlayerDamage + 1);
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"{nextLine}Вы нанесли удар посохом: {playerDamage}{nextLine}");
+
+                        bossHealth -= playerDamage;
+
+                        break;
+
+                    case Fireball:
+                        if (playerMana < playerFireballManaCost)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{nextLine}Не достаточно маны!{nextLine}");
+
+                            break;
+                        }
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{nextLine}Вы нанесли урон заклинанием [{fireballName}]: {playerFireballDamage}{nextLine}");
+
+                            bossHealth -= playerFireballDamage;
+                            playerMana -= playerFireballManaCost;
+                            fireballActive = true;
+                        }
+                        break;
+
+                    case Explotion:
+                        if (playerMana < playerExplosionManaCost)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{nextLine}Не достаточно маны!{nextLine}");
+
+                            break;
+                        }
+                        else if (fireballActive == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{nextLine}Вы нанесли урон заклинанием [{explosionName}]: {playerExplosionDamage}{nextLine}");
+
+                            bossHealth -= playerExplosionDamage;
+                            playerMana -= playerExplosionManaCost;
+                            fireballActive = false;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{nextLine}Вы не нанесли урон заклинанием [{explosionName}]: *** Требуется сначала заклинание [{fireballName}]!{nextLine}");
+                        }
+
+                        break;
+
+                    case HealCast:
+                        if (playerMana < playerHealManaCost)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{nextLine}Не достаточно маны!{nextLine}");
+
+                            break;
+                        }
+                        else if (triesCountHeal <= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"{nextLine}Вы больше не можете использовать ето заклинание!{nextLine}");
+
+                            break;
+                        }
+                        else
+                        {
+                            triesCountHeal--;
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{nextLine}Вы произнесли заклинание [{healCastName}] на восстановление {playerHealCast} здоровья{nextLine}");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"Осталось количество попыток лечения: {triesCountHeal}{nextLine}");
+
+                            playerMana -= playerHealManaCost;
+                            playerHealth += playerHealCast;
+                        }
+                        if (playerHealth > playerHealthMax)
+                        {
+                            playerHealth = playerHealthMax;
+                        }
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"{nextLine}Вы не совершили удар и пропускаете ход!{nextLine}");
+
+                        break;
+                }
+
+                bossDamage = randomBossDamage.Next(lowerBossDamage, upperBossDamage + 1);
+
+                playerArmor -= bossDamage;
+
+                if (playerArmor < 0)
+                {
+                    playerHealth += playerArmor;
+                    playerArmor = 0;
+                }
+
+                ++numberRound;
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Босс совершил удар и нанес вам урон: {bossDamage}{nextLine}");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine($"Итоги {numberRound}-го раунда:{nextLine}" +
+                                  $"Здоровье {bossName}: {bossHealth}{nextLine}" +
+                                  $"Здоровье {playerName}: {playerHealth}{nextLine}" +
+                                  $"Броня {playerName}: {playerArmor}{nextLine}" +
+                                  $"Мана {playerName}: {playerMana}{nextLine}");
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                if (bossHealth <= 0 && playerHealth > 0)
+                {
+                    Console.WriteLine(playerName + " Победил!");
+
+                    isWorking = false;
+                }
+                else if (playerHealth <= 0 && bossHealth > 0)
+                {
+                    Console.WriteLine(bossName + " Победил!");
+
+                    isWorking = false;
+                }
+                else if (bossHealth <= 0 && playerHealth <= 0)
+                {
+                    Console.WriteLine("Бой закончился ничьей!");
+
+                    isWorking = false;
+                }
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+        }
+    }
+}
