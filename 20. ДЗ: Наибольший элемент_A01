@@ -1,0 +1,89 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int lowerRandomNumber = 10;
+            int upperRandomNumber = 100;
+            int maxRowIndex = 10;
+            int maxColIndex = 10;
+            int maxElement = 0;
+            int maxElementCount = 0;
+
+            int[,] array = new int[maxRowIndex, maxColIndex];
+
+            Random random = new Random();
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Исходный массив:\n");
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = random.Next(lowerRandomNumber, upperRandomNumber);
+
+                    if (array[i, j] > maxElement)
+                    {
+                        maxElement = array[i, j];
+                    }
+                }
+
+            }
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] == maxElement)
+                    {
+                        maxElementCount++;
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+
+                    Console.Write(array[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"\nСамое большое число в массиве: {maxElement}\n");
+            Console.WriteLine("Колличество самого большого числа в массиве составляет - " + maxElementCount + "\n");
+            Console.WriteLine("Заменим наше самое большое число в массиве на 0\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Новый массив:\n");
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] == maxElement)
+                    {
+                        array[i, j] = 0;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
+
+                    Console.Write(array[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Колличество замененных значений составляет - " + maxElementCount);
+        }
+    }
+}
