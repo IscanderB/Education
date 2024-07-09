@@ -1,0 +1,46 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int lowerRandomNumber = 1;
+            int upperRandomNumber = 10;
+            int lineSum = 0;
+            int multiplyColumn = 1;
+            int columnIndex = 1;
+            int lineIndex = 2;
+
+            int[,] numbers = new int[4, 4];
+
+            Random random = new Random();
+
+            for (int i = 0; i < numbers.GetLength(0); i++)
+            {
+                for (int j = 0; j < numbers.GetLength(1); j++)
+                {
+                    numbers[i, j] = random.Next(lowerRandomNumber, upperRandomNumber);
+
+                    Console.Write(numbers[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < numbers.GetLength(0); i++)
+            {
+                multiplyColumn *= numbers[i, columnIndex - 1];
+            }
+
+            for (int j = 0; j < numbers.GetLength(0); j++)
+            {
+                lineSum += numbers[lineIndex - 1, j];
+            }
+
+            Console.WriteLine("Произведение столбца #" + columnIndex + " = " + multiplyColumn);
+            Console.WriteLine("Сумма строки #" + lineIndex + " = " + lineSum);
+        }
+    }
+}
