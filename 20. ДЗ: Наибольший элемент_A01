@@ -13,32 +13,31 @@ namespace Study
             int maxElement = 0;
             int maxElementCount = 0;
 
-            int[,] array = new int[maxRowIndex, maxColIndex];
+            int[,] numbers = new int[maxRowIndex, maxColIndex];
 
             Random random = new Random();
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Исходный массив:\n");
 
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < numbers.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < numbers.GetLength(1); j++)
                 {
-                    array[i, j] = random.Next(lowerRandomNumber, upperRandomNumber);
+                    numbers[i, j] = random.Next(lowerRandomNumber, upperRandomNumber);
 
-                    if (array[i, j] > maxElement)
+                    if (numbers[i, j] > maxElement)
                     {
-                        maxElement = array[i, j];
+                        maxElement = numbers[i, j];
                     }
                 }
-
             }
 
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < numbers.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < numbers.GetLength(1); j++)
                 {
-                    if (array[i, j] == maxElement)
+                    if (numbers[i, j] == maxElement)
                     {
                         maxElementCount++;
 
@@ -49,7 +48,7 @@ namespace Study
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
 
-                    Console.Write(array[i, j] + " ");
+                    Console.Write(numbers[i, j] + " ");
                 }
 
                 Console.WriteLine();
@@ -62,13 +61,14 @@ namespace Study
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Новый массив:\n");
 
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < numbers.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < numbers.GetLength(1); j++)
                 {
-                    if (array[i, j] == maxElement)
+                    if (numbers[i, j] == maxElement)
                     {
-                        array[i, j] = 0;
+                        numbers[i, j] = 0;
+
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
                     else
@@ -76,14 +76,14 @@ namespace Study
                         Console.ForegroundColor = ConsoleColor.Blue;
                     }
 
-                    Console.Write(array[i, j] + " ");
+                    Console.Write(numbers[i, j] + " ");
                 }
 
                 Console.WriteLine();
             }
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Колличество замененных значений составляет - " + maxElementCount);
+            Console.WriteLine("Колличество замененных значений составляет: " + maxElementCount);
         }
     }
 }
