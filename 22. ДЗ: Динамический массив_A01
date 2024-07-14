@@ -1,0 +1,65 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string userInput;
+            int userInputIndex = 1;
+            int sumUserArray = 0;
+
+            bool isWorking = true;
+
+            int[] inputUserArray = new int[userInputIndex];
+
+            while (isWorking)
+            {
+                int[] extendUserArray = new int[inputUserArray.Length + 1];
+
+                Console.Write("Введите чмсловое значение или SUM для суммы всех значений массива или Exit для выхода: ");
+                userInput = Console.ReadLine();
+
+                if (userInput != "")
+                {
+                    if (userInput.ToLower() == "exit")
+                    {
+                        isWorking = false;
+                    }
+                    else if (userInput.ToLower() == "sum")
+                    {
+                        for (int i = 0; i < inputUserArray.Length; i++)
+                        {
+                            sumUserArray += inputUserArray[i];
+                        }
+
+                        Console.WriteLine("Сумма массива = " + sumUserArray);
+
+                        sumUserArray = 0;
+                    }
+                    else
+                    {
+                        inputUserArray[userInputIndex - 1] = Convert.ToInt32(userInput);
+                        userInputIndex++;
+
+                        Array.Copy(inputUserArray, extendUserArray, inputUserArray.Length);
+
+                        inputUserArray = extendUserArray;
+
+                        for (int i = 0; i < inputUserArray.Length - 1; i++)
+                        {
+                            Console.Write(inputUserArray[i] + " ");
+                        }
+
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Не верный формат!");
+                }
+            }
+        }
+    }
+}
