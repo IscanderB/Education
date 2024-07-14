@@ -1,0 +1,48 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int similarElement = 0;
+            int similarCount = 1;
+            int maxCount = 0;
+            int maxElements = 30;
+            int minValueRandom = 3;
+            int maxValueRandom = 5;
+
+            Random random = new Random();
+
+            int[] numbers = new int[maxElements];
+
+            for (int i = 0; i < maxElements; i++)
+            {
+                numbers[i] = random.Next(minValueRandom, maxValueRandom);
+                Console.Write(numbers[i] + " ");
+            }
+
+            for (int i = 0; i < maxElements - 1; i++)
+            {
+                if (numbers[i] == numbers[i + 1])
+                {
+                    similarCount++;
+
+                    if (maxCount < similarCount)
+                    {
+                        maxCount = similarCount;
+                        similarElement = numbers[i];
+                    }
+                }
+                else
+                {
+                    similarCount = 1;
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Число {similarElement} повторяется {maxCount} раз подряд");
+        }
+    }
+}
