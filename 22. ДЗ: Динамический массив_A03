@@ -1,0 +1,63 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string ExitCommand = "exit";
+            const string SumCommand = "sum";
+
+            string userInput;
+
+            int[] numbers = new int[0];
+
+            bool isWork = true;
+
+            while (isWork)
+            {
+                Console.Write($"Введите чмсловое значение или {SumCommand} для суммы всех значений массива или {ExitCommand} для выхода: ");
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == ExitCommand)
+                {
+                    isWork = false;
+                }
+                else if (userInput.ToLower() == SumCommand)
+                {
+                    int sumUserArray = 0;
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        sumUserArray += numbers[i];
+                    }
+
+                    Console.WriteLine("\nСумма массива = " + sumUserArray + "\n");
+                }
+                else
+                {
+                    int[] tempNumbers = new int[numbers.Length + 1];
+
+                    tempNumbers[numbers.Length] = Convert.ToInt32(userInput);
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        tempNumbers[i] = numbers[i];
+                    }
+
+                    numbers = tempNumbers;
+                }
+
+                Console.WriteLine("Массив:");
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    Console.Write(numbers[i] + " ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
