@@ -1,0 +1,59 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            int[] numbers = new int[10];
+            int[] tempNumbers = new int[10];
+
+            int maxElements = 10;
+
+            bool isWork = true;
+
+            Console.Write("Задан массив: ");
+
+            for (int i = 0; i < maxElements; i++)
+            {
+                numbers[i] = random.Next(0, 100);
+
+                Console.Write(numbers[i] + " ");
+            }
+
+            Console.WriteLine();
+
+            while (isWork)
+            {
+                for (int i = 0; i < maxElements - 1; i++)
+                {
+                    if (numbers[i] > numbers[i + 1])
+                    {
+                        tempNumbers[i] = numbers[i + 1];
+                        numbers[i + 1] = numbers[i];
+                        numbers[i] = tempNumbers[i];
+                    }
+                }
+
+                maxElements--;
+
+                if (maxElements == 0)
+                {
+                    isWork = false;
+                }
+            }
+
+            Console.Write("Отсортированный массив: ");
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
