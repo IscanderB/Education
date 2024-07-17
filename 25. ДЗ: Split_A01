@@ -1,0 +1,21 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "Здравствуйте! Я сейчас делаю домашнее задании под названием: Split. И я немного - охреневаю со сплита!";
+
+            char[] separators = new char[] { ' ', '.', '!', '-', ':'};
+
+            string[] substr = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var sub in substr)
+            {
+            Console.WriteLine(sub);
+            }
+        }
+    }
+}
