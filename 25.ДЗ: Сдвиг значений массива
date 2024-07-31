@@ -1,0 +1,55 @@
+using System;
+
+namespace Study
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int minRandomValue = 0;
+            int maxRandomValue = 100;
+            int elementCount = 10;
+            int userInput;
+            int temp;
+
+            Random randon = new Random();
+
+            int[] numbers = new int[elementCount];
+
+            Console.WriteLine("Исходный массив: ");
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = randon.Next(minRandomValue, maxRandomValue);
+
+                Console.Write(" " + numbers[i]);
+            }
+
+            Console.WriteLine();
+            Console.Write("\nВведите количество позиций на которые нужно сдвинуть массив влево: ");
+
+            userInput = Convert.ToInt32(Console.ReadLine());
+
+            for (int j = 0; j < userInput; j++)
+            {
+                temp = numbers[0];
+
+                for (int i = 0; i < numbers.Length - 1; i++)
+                {
+                    numbers[i] = numbers[i + 1];
+                }
+
+                numbers[numbers.Length - 1] = temp;
+            }
+
+            Console.WriteLine("\nМассив со смещением влево на " + userInput + " позиций:");
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write(" " + numbers[i]);
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
