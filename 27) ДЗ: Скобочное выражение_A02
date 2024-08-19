@@ -1,0 +1,50 @@
+using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.Unicode;
+
+        string bracket = "(())((((()())())))";
+        string errorMessage = "Cтрока НЕ корректная!";
+
+        char openBracket = '(';
+        char closeBracket = ')';
+
+        int bracketDepthCount = 0;
+        int maxBracketDepth = 0;
+
+        for (int i = 0; i < bracket.Length; i++)
+        {
+            if (bracket[i] == openBracket)
+            {
+                bracketDepthCount++;
+
+                if (bracketDepthCount > maxBracketDepth)
+                {
+                    maxBracketDepth = bracketDepthCount;
+                }
+            }
+            else if (bracket[i] == closeBracket)
+            {
+                bracketDepthCount--;
+
+                if (bracketDepthCount < 0)
+                {
+                    Console.WriteLine(errorMessage);
+                }
+            }
+        }
+
+        if (bracketDepthCount == 0)
+        {
+            Console.WriteLine("Cтрока корректная! Максимум глубины равняется = " + maxBracketDepth);
+        }
+        else
+        {
+            Console.WriteLine(errorMessage);
+        }
+    }
+}
